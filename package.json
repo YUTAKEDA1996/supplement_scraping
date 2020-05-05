@@ -16,5 +16,13 @@
     "nodemon": "^2.0.3",
     "ts-node": "^8.9.1",
     "typescript": "^3.8.3"
+  },
+  "dependencies": {
+    "@types/jsdom": "^16.2.1",
+    "@types/puppeteer": "^2.0.1",
+    "csv": "^5.3.2",
+    "jsdom": "^16.2.2",
+    "puppeteer": "^3.0.2",
+    "xlsx": "^0.16.0"
   }
 }
