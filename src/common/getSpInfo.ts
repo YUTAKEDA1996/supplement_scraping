@@ -94,11 +94,12 @@ const getSpDetails = async (top24SpInfos: Top24Supplements) => {
     args: ["--no-sandbox", "--disable-setuid-sandbox"]
   });
   const spDetails: Partial<SupplementDetail>[] = [];
-  for await (var obj of top24SpInfos.slice(0, 2)) {
+  for await (var obj of top24SpInfos) {
     const page: Page = await browser.newPage();
     await page.goto(obj.url);
     const tempSpInfo: any = {};
     tempSpInfo["productId"] = 0;
+    await getNutorition(page);
     for await (var pathObj of xpaths) {
       const elemts: any = await page.$x(pathObj.path);
       const handle = await elemts?.[pathObj.arrayIndex]?.getProperty(
@@ -131,54 +132,60 @@ const getSpDetails = async (top24SpInfos: Top24Supplements) => {
 };
 
 const getNutorition = async (page: Page) => {
-  // const query = (selector: string, page: Page) =>
-  //   Array.from(page.querySelectorAll(selector));
-  // console.log(
-  //   query("tr", document).map(row =>
-  //     query("td, th", row).map(cell => cell.textContent)
-  //   )
-  // );
-
   console.log("getNutorition");
-  // const elemts = await page.$x(
-  //   '//div[@class="supplement-facts-container"]/table'
-  // );
+  const elemts = await page.$x(
+    '//div[@class="supplement-facts-container"]/table'
+  );
   const trList = await page.$$("table tr");
-  // console.log(
-  //   await Promise.all(
-  //     trList.map(async (tr: any) => {
-  //       return {
-  //         key: (
-  //           await tr
-  //             .$("td.key")
-  //             .getProperty("innerText")
-  //             .jsonValue()
-  //         ).trim(),
-  //         value: (
-  //           await tr
-  //             .$("tr.key")
-  //             .getProperty("innerText")
-  //             .jsonValue()
-  //         ).trim()
-  //       };
-  //     })
-  //   )
-  // );
-  // console.log(await Promise.all(trList));
+  const nutoritions = await getNutoritions();
+};
 
-  // const ws = XLSX.utils.table_to_sheet(elemts);
-  // console.log({ ws });
-  // console.log(elemts.length);
-  // await Promise.all(
-  //   elemts.map(async (i: any) => {
-  //     const jsHandle = await i.getProperty("textContent");
-  //     const ws = XLSX.utils.table_to_sheet(i);
-  //
-  //     const text = await jsHandle.jsonValue();
-  //     console.log(text.replace(/      /g, "\t").split("\t"));
-  //     return true;
-  //   })
-  // );
+const getNutoritions = async (trList: any) => {
+  const nutoritions: { name: string; amount: string }[] = [];
+  trList.map(async (tr: any) => {
+    const trValue = await tr.getProperty("textContent");
+    const content: string = await trValue.jsonValue();
+    //空白を消去して１行に
+    const replaceText = content.replace(/\s+/g, "");
+    //mgやgの表記がないものは省く
+    if (
+      replaceText.match(/\d{1,}(mg|g)/g) &&
+      !replaceText.match(/\D{1,}(オメガ3|omega3|オメガ３)/g)
+    ) {
+      const name = replaceText.match(/[^\d{1,}(mg|g)]{1,}/g)?.[0];
+      const amount = replaceText.match(/\d{1,}(mg|g)/g)?.[0];
+      const nutorition: { name: string; amount: string } = {
+        name: name ? name : "Not Found",
+        amount: amount ? amount : "Not Found"
+      };
+      nutoritions.push(nutorition);
+      console.log(replaceText.match(/[^\d{1,}(mg|g)]{1,}/g)?.[0]);
+      console.log(replaceText.match(/\d{1,}(mg|g)/g)?.[0]);
+    } else if (replaceText.match(/\D{1,}(オメガ3|omega3|オメガ３)/g)) {
+      const name = replaceText.match(
+        /\D{1,}(オメガ3|omega3|オメガ３)\D{0,}/g
+      )?.[0];
+      const amount = replaceText.match(
+        /[^(オメガ3|omega3|オメガ３)\D{0,}]\d{1,}(mg|g)/g
+      )?.[0];
+      const nutorition: { name: string; amount: string } = {
+        name: name ? name : "Not Found",
+        amount: amount ? amount : "Not Found"
+      };
+      nutoritions.push(nutorition);
+      console.log("omega3-----");
+      console.log(
+        replaceText.match(/\D{1,}(オメガ3|omega3|オメガ３)\D{0,}/g)?.[0]
+      );
+      console.log(
+        replaceText.match(
+          /[^(オメガ3|omega3|オメガ３)\D{0,}]\d{1,}(mg|g)/g
+        )?.[0]
+      );
+      return nutoritions;
+    }
+  });
+  return nutoritions;
 };
 
 const getCapsuleType = (productURL: string): string => {
