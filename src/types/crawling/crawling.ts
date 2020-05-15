@@ -25,9 +25,9 @@ export type SupplementNutorition = {
   nutritions: {
     nutoritionName: string;
     nutoritionAmount: string;
-    NutoritionPer: string;
   }[];
   name: string;
+  url: string;
   productId: number;
 };
 
