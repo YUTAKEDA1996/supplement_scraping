@@ -10,21 +10,24 @@ import {
   Top24Supplements
 } from "./types/crawling/crawling";
 import getTop24URLs from "./common/GetTop24URLs";
-import getSpInfo from "./common/getSpInfo";
+import getSpDetails from "./common/getSpInfo";
+import { write } from "./common/common_csv";
 
 const main = async () => {
   //成分名のcsv読み込み
-  const nuttoritions: string[] = ["vitamin c"];
+  const nuttoritions: string[] = ["DHA"];
   nuttoritions.map(async i => {
     //top24取得
     const top24URLS = await getTop24URLs(i);
-    //console.log({ top24URLS });
     // //データの詳細とクローリング
     //const details: SupplementInfo =
-    await getSpInfo(top24URLS);
+    const spDetails = await getSpDetails(top24URLS);
+
+    //spInfo.csvの末尾にサプリ詳細書き出し
+    write(spDetails, "src/outputData/spInfo.csv");
     // //末尾にtop24一覧の書き出し
     // writerTop24(top24URLS);
-    // //末尾にsupplementsの詳細の書き出し
+
     // writeSpInfo(details.spInfo);
     // //末尾に成分の一覧書き出し
     // writeSpDetail(details.spDetail);

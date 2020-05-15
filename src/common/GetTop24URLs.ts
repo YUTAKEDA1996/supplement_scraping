@@ -8,7 +8,8 @@ import { Top24Supplements } from "../types/crawling/crawling";
 const getTop24URLs = async (nutorition: string): Promise<Top24Supplements> => {
   //空白をURL用にencode
   const encodeNutorition = nutorition.replace(/ /g, "%20");
-  const url = "https://jp.iherb.com/search?kw=" + encodeNutorition + "&noi=24";
+  const url =
+    "https://jp.iherb.com/search?kw=" + encodeNutorition + "&noi=24&cids=1855";
   console.log(url);
   const browser = await puppeteer.launch({
     args: ["--no-sandbox", "--disable-setuid-sandbox"]

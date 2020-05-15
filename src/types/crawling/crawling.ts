@@ -9,13 +9,16 @@ export type SupplementDetail = {
   productName: string;
   amount: number;
   price: number;
-  priceperOne: number;
-  productUrl: string;
+  productImgUrl: string;
   productCode: string;
   rating: number;
   raitingCount: number;
-  productImgUrl: string;
-  isStoke: boolean;
+  stokeStatus: boolean;
+  brand: string;
+  priceperOne: number;
+  productUrl: string;
+  unit: string;
+  capsuleType: string;
 };
 
 export type SupplementNutorition = {
@@ -37,6 +40,21 @@ export type SupplementInfo = {
 export type Xpaths = {
   path: string;
   property: string;
-  name: string;
+  name:
+    | "productId"
+    | "productName"
+    | "amount"
+    | "price"
+    | "productImgUrl"
+    | "productCode"
+    | "rating"
+    | "raitingCount"
+    | "stokeStatus"
+    | "brand"
+    | "priceperOne"
+    | "productUrl"
+    | "unit"
+    | "capsuleType";
   arrayIndex: number;
+  typeInfo: "string" | "number" | "array";
 }[];
