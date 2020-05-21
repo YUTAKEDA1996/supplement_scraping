@@ -1,214 +1,212 @@
-ingredientName,isCrawlingFinished
-MSM,false,
-Glucosamine,false,
-Willowbark,false,
-Citrulline,false,
-Arginine,false,
-DHA,false,
-EPA,false,
-HMB,false,
-glycine,false,
-zinc,false,
-chromium,false,
-selenium,false,
-protein,false,
-VitaminC,false,
-L-cysteine,false,
-Maca,false,
-Tonkatants,false,
-VitaminE,false,
-Sesamin,false,
-ReducedcoenzymeQ10,false,
-Pycnogenol,false,
-Curcumin,false,
-Chondroitin,false,
-Imidazoledipeptide,false,
-Sawpalmettoextract,false,
-Krilloil,false,
-caffeine,false,
-Ginsenoside,false,
-Theanine,false,
-ChondroitinsulfateNa,false,
-VitaminB2,false,
-VitaminB6,false,
-VitaminB1,false,
-VitaminB3,false,
-VitaminB5,false,
-VitaminC(timerelease),false,
-Forskolin,false,
-hyaluronicacid,false,
-VitaminB12,false,
-Proteoglycan,false,
-Folicacid,false,
-Lactosucrose,false,
-calcium,false,
-iron,false,
-Fermentedblackgarlicpowder,false,
-Eggyolkoil,false,
-Salacinol,false,
-Indigestibledextrin,false,
-Epigallocatechingallate,false,
-Monoglucosylrutin,false,
-Glucosaminehydrochloride,false,
-Chondroitinsulfate,false,
-Quercetinglycoside,false,
-Anserine,false,
-L-Ornithine,false,
-L-theanine,false,
-Champignonextract,false,
-Placenta,false,
-Biotin,false,
-Astaxanthin,false,
-collagen,false,
-Niacin,false,
-enzyme,false,
-Acai,false,
-L-cystine,false,
-Soyisoflavone,false,
-Squashin,false,
-BoneHep,false,
-Kojienzyme,false,
-Marinecollagenpeptide,false,
-Ceramide,false,
-Camelliaseedextractpowder,false,
-Lotusgermextractpowder,false,
-Dermatansulfate,false,
-Hihatsuextractpowder,false,
-Pigplacentaextract,false,
-Horseplacentaextract,false,
-lysine,false,
-Glucosylceramide,false,
-Pantothenicacid,false,
-Elastin,false,
-Equol,false,
-RobBit,false,
-VitaminA,false,
-Anthocyanin,false,
-magnesium,false,
-Virgincoconutoil,false,
-Valine,false,
-Leucine,false,
-Isoleucine,false,
-Glucomannan,false,
-KidneyBeanExtractPowder,false,
-EllagicacidderivedfromAfricanmangotree,false,
-Seaweedpowder,false,
-Gymnemasylvestreextractpowder,false,
-Citrusarantiumextractpowder,false,
-Melilotextractpowder,false,
-Soypeptide,false,
-Soylecithin,false,
-Tochuextractpowder(12timesconcentrated),false,
-Barleyextractpowder,false,
-VitaminD,false,
-VitaminK,false,
-copper,false,
-manganese,false,
-Iodine,false,
-molybdenum,false,
-Phenylalanine,false,
-Threonine,false,
-Methionine,false,
-Histidine,false,
-Tryptophan,false,
-Grainfermentedextractpowder(containing4enzymes),false,
-Hesperidin,false,
-CBP,false,
-Lacticacidbacteria/yeastfermentationsterilizationpowder,false,
-Blackpepperextract,false,
-VitaminP,false,
-β-carotene,false,
-DPA,false,
-Quercetin,false,
-Phycocyanin,false,
-Totalcarotenoid,false,
-Chlorophylla,false,
-Betacarotene,false,
-Totaltocotrienols,false,
-aminoacid,false,
-Inositol,false,
-γ-tocopherol,false,
-Alphacarotene,false,
-Lycopene,false,
-Lutein,false,
-Zeaxanthin,false,
-Betacryptoxanthin,false,
-Valerianextract,false,
-GABA,false,
-Hopextract,false,
-L-carnitine,false,
-Chitosan,false,
-Chitosanoligosaccharide,false,
-Gymnemasylvestreextract,false,
-Mulberryleafextract,false,
-PigeonDragonGreenTeaExtract,false,
-Kidneybeanextract,false,
-α-lipoicacid,false,
-Oliveleafextractpowdercontainingoleanolicacid,false,
-Kintokigingerpowder,false,
-Dietaryfiber(isomaltodextrin),false,
-Curcuminfromturmeric,false,
-Oystermeatextract,false,
-Thistleextract,false,
-L-cysteine​​peptide,false,
-Soyisoflavoneaglycone,false,
-Lowmolecularweightcollagen,false,
-Lowmolecularweightfishcollagen,false,
-N-acetylglucosamine,false,
-Lowmolecularweightmarinecollagen,false,
-TypeIIcollagen,false,
-Ornithine,false,
-Capsicumextractpowder(containingcapsaicin),false,
-Oliveleafextractpowder,false,
-Sharkcartilageextractpowder(containingchondroitin),false,
-Sawpalmettofruitextract,false,
-Nanolutein,false,
-Nanobilberryextract(ultra-finebilberryextract),false,
-Bilberryextract,false,
-Plantsterols,false,
-Pumpkinseedextract,false,
-Conjugatedlinoleicacid,false,
-Coleusforskoliextractpowder,false,
-Phosphatidylserine,false,
-S-equol,false,
-Ginkgoleafextractpowder,false,
-Collagenpeptide(fromfish),false,
-α-linolenicacid,false,
-Nattokinaseactivity,false,
-Nattocultureextractpowder,false,
-Cassisanthocyanin,false,
-Ginkgobilobaflavonoidglycosides,false,
-Ginkgoleafterpenelactone,false,
-Salmonnasalcartilage-derivedproteoglycan,false,
-TypeIIcollagenderivedfromsalmonnasalcartilage,false,
-WesternHypericumExtract,false,
-γ-aminobutyricacid(GABA),false,
-DHA+EPA,false,
-Siberianginsengextract,false,
-Ginkgoleafextract,false,
-Driedcitrusfruits(containingbioflavonoids),false,
-Acerolaconcentrate,false,
-Peppermintextract,false,
-Ferulicacid,false,
-Collagenpeptide,false,
-Lactosefermentedproductcontaininglactobionicacid,false,
-Isoflavoneaglycoline,false,
-Lactium,false,
-Rahma,false,
-chamomile,false,
-Bvitamingroup,false,
-Parxan,false,
-HyaluronicacidNa,false,
-Crocetin,false,
-Seaxanthin,false,
-Bilberryderivedanthocyanins,false,
-HMBcalcium,false,
-Non-denaturedtypeIIcollagen,false,
-BCAA,false,
-Glucosylceramidederivedfrompineapple,false,
-N-acetylglucosamine,false,
-BifidobacteriumBB536,false,
-BifidobacteriumHN019,false,
-BifidobacteriumBB-12,false,
-Gallatecatechin,false,
-Piperinesderivedfromhihatsu,false,
+name,isFinish
+Willow bark	,true
+Citrulline	,true
+Arginine	,true
+DHA	,true
+EPA	,true
+HMB	,true
+glycine	,true
+zinc	,true
+chromium	,true
+selenium	,true
+protein	,true
+Vitamin C	,false
+L-cysteine	,false
+Maca	,false
+Tonkat ants	,false
+Vitamin E	,false
+Sesamin	,false
+Reduced coenzyme Q10	,false
+Pycnogenol	,false
+Curcumin	,false
+Chondroitin	,false
+Imidazole dipeptide	,false
+Saw palmetto extract	,false
+Krill oil	,false
+caffeine	,false
+Ginsenoside	,false
+Theanine	,false
+Chondroitin sulfate Na	,false
+Vitamin B2	,false
+Vitamin B6	,false
+Vitamin B1	,false
+Vitamin B3	,false
+Vitamin B5	,false
+Vitamin C (time release)	,false
+Forskolin	,false
+hyaluronic acid	,false
+Vitamin B12	,false
+Proteoglycan	,false
+Folic acid	,false
+Lactosucrose	,false
+calcium	,false
+iron	,false
+Fermented black garlic powder	,false
+Egg yolk oil	,false
+Salacinol	,false
+Indigestible dextrin	,false
+Epigallocatechin gallate	,false
+Monoglucosyl rutin	,false
+Glucosamine hydrochloride	,false
+Chondroitin sulfate	,false
+Quercetin glycoside	,false
+Anserine	,false
+L-Ornithine	,false
+L-theanine	,false
+Champignon extract	,false
+Placenta	,false
+Biotin	,false
+Astaxanthin	,false
+collagen	,false
+Niacin	,false
+enzyme	,false
+Acai	,false
+L-cystine	,false
+Soy isoflavone	,false
+Squashin	,false
+Bone Hep	,false
+Koji enzyme	,false
+Marine collagen peptide	,false
+Ceramide	,false
+Camellia seed extract powder	,false
+Lotus germ extract powder	,false
+Dermatan sulfate	,false
+Hihatsu extract powder	,false
+Pig placenta extract	,false
+Horse placenta extract	,false
+lysine	,false
+Glucosylceramide	,false
+Pantothenic acid	,false
+Elastin	,false
+Equol	,false
+Rob Bit	,false
+Vitamin A	,false
+Anthocyanin	,false
+magnesium	,false
+Virgin coconut oil	,false
+Valine	,false
+Leucine	,false
+Isoleucine	,false
+Glucomannan	,false
+Kidney Bean Extract Powder	,false
+Ellagic acid derived from African mango tree	,false
+Seaweed powder	,false
+Gymnema sylvestre extract powder	,false
+Citrus arantium extract powder	,false
+Melilot extract powder	,false
+Soy peptide	,false
+Soy lecithin	,false
+Tochu extract powder (12 times concentrated)	,false
+Barley extract powder	,false
+Vitamin D	,false
+Vitamin K	,false
+copper	,false
+manganese	,false
+Iodine	,false
+molybdenum	,false
+Phenylalanine	,false
+Threonine	,false
+Methionine	,false
+Histidine	,false
+Tryptophan	,false
+Grain fermented extract powder (containing 4 enzymes)	,false
+Hesperidin	,false
+CBP	,false
+Lactic acid bacteria / yeast fermentation sterilization powder	,false
+Black pepper extract	,false
+Vitamin P	,false
+β-carotene	,false
+DPA	,false
+Quercetin	,false
+Phycocyanin	,false
+Total carotenoid	,false
+Chlorophyll a	,false
+Beta carotene	,false
+Total tocotrienols	,false
+amino acid	,false
+Inositol	,false
+γ-tocopherol	,false
+Alpha carotene	,false
+Lycopene	,false
+Lutein	,false
+Zeaxanthin	,false
+Beta cryptoxanthin	,false
+Valerian extract	,false
+GABA	,false
+Hop extract	,false
+L-carnitine	,false
+Chitosan	,false
+Chitosan oligosaccharide	,false
+Gymnema sylvestre extract	,false
+Mulberry leaf extract	,false
+Pigeon Dragon Green Tea Extract	,false
+Kidney bean extract	,false
+α-lipoic acid	,false
+Olive leaf extract powder containing oleanolic acid	,false
+Kintoki ginger powder	,false
+Dietary fiber (isomaltodextrin)	,false
+Curcumin from turmeric	,false
+Oyster meat extract	,false
+Thistle extract	,false
+L-cysteine ​​peptide	,false
+Soy isoflavone aglycone	,false
+Low molecular weight collagen	,false
+Low molecular weight fish collagen	,false
+N-acetylglucosamine	,false
+Low molecular weight marine collagen	,false
+Type II collagen	,false
+Ornithine	,false
+Capsicum extract powder (containing capsaicin)	,false
+Olive leaf extract powder	,false
+Shark cartilage extract powder (containing chondroitin)	,false
+Saw palmetto fruit extract	,false
+Nanolutein	,false
+Nano bilberry extract (ultra-fine bilberry extract)	,false
+Bilberry extract	,false
+Plant sterols	,false
+Pumpkin seed extract	,false
+Conjugated linoleic acid	,false
+Coleus forskoli extract powder	,false
+Phosphatidylserine	,false
+S-equol	,false
+Ginkgo leaf extract powder	,false
+Collagen peptide (from fish)	,false
+α-linolenic acid	,false
+Nattokinase activity	,false
+Natto culture extract powder	,false
+Cassis anthocyanin	,false
+Ginkgo biloba flavonoid glycosides	,false
+Ginkgo leaf terpene lactone	,false
+Salmon nasal cartilage-derived proteoglycan	,false
+Type II collagen derived from salmon nasal cartilage	,false
+Western Hypericum Extract	,false
+γ-aminobutyric acid (GABA)	,false
+DHA + EPA	,false
+Siberian ginseng extract	,false
+Ginkgo leaf extract	,false
+Dried citrus fruits (containing bioflavonoids)	,false
+Acerola concentrate	,false
+Peppermint extract	,false
+Ferulic acid	,false
+Collagen peptide	,false
+Lactose fermented product containing lactobionic acid	,false
+Isoflavone aglycoline	,false
+Lactium	,false
+Rahma	,false
+chamomile	,false
+B vitamin group	,false
+Parxan	,false
+Hyaluronic acid Na	,false
+Crocetin	,false
+Seaxanthin	,false
+Bilberry derived anthocyanins	,false
+HMB calcium	,false
+Non-denatured type II collagen	,false
+BCAA	,false
+Glucosylceramide derived from pineapple	,false
+N-acetylglucosamine	,false
+Bifidobacterium BB536	,false
+Bifidobacterium HN019	,false
+Bifidobacterium BB-12	,false
+Gallate catechin	,false
+Piperines derived from hihatsu	,false

@@ -1,4 +1,4 @@
-import puppeteer, { Page } from "puppeteer";
+import { Page } from "puppeteer";
 import { SupplementNutorition } from "../types/crawling/crawling";
 
 const getNutoritions = async (
@@ -6,7 +6,6 @@ const getNutoritions = async (
   name: string,
   url: string
 ): Promise<SupplementNutorition> => {
-  //console.log("getNutorition");
   const elemts = await page.$x(
     '//div[@class="supplement-facts-container"]/table'
   );
@@ -39,8 +38,6 @@ const parseTabeleNutoritions = async (
         nutoritionAmount: amount ? amount : "Not Found"
       };
       nutoritions.push(nutorition);
-      //   console.log(replaceText.match(/[^\d{1,}(mg|g)]{1,}/g)?.[0]);
-      //   console.log(replaceText.match(/\d{1,}(mg|g)/g)?.[0]);
     } else if (replaceText.match(/\D{1,}(オメガ3|omega3|オメガ３)/g)) {
       const name = replaceText.match(
         /\D{1,}(オメガ3|omega3|オメガ３)\D{0,}/g
@@ -53,15 +50,6 @@ const parseTabeleNutoritions = async (
         nutoritionAmount: amount ? amount : "Not Found"
       };
       nutoritions.push(nutorition);
-      //   console.log("omega3-----");
-      //   console.log(
-      //     replaceText.match(/\D{1,}(オメガ3|omega3|オメガ３)\D{0,}/g)?.[0]
-      //   );
-      //   console.log(
-      //     replaceText.match(
-      //       /[^(オメガ3|omega3|オメガ３)\D{0,}]\d{1,}(mg|g)/g
-      //     )?.[0]
-      //   );
     }
   });
   return nutoritions;

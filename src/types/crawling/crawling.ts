@@ -2,6 +2,10 @@ export type Top24Supplements = {
   category: string;
   productName: string;
   url: string;
+  rating: number;
+  raitingCount: number;
+  price: number;
+  capsuleType: string;
 }[];
 
 export type SupplementDetail = {
@@ -30,6 +34,14 @@ export type SupplementNutorition = {
   url: string;
   productId: number;
 };
+
+export type ExFormattNutorition = {
+  nutoritionName: string;
+  nutoritionAmount: string;
+  name: string;
+  url: string;
+  productId: number;
+}[];
 
 export type SupplementInfo = {
   id: number;

@@ -5,32 +5,33 @@ import { sleep } from "./utility";
 import {
   SupplementDetail,
   Top24Supplements,
-  SupplementInfo
+  SupplementInfo,
+  SupplementNutorition
 } from "../types/crawling/crawling";
 
-const getSpDetails = async (top24SpInfos: Top24Supplements) => {
+const getSpInfos = async (
+  top24SpInfos: Top24Supplements
+): Promise<{
+  spNutoritions: SupplementNutorition[];
+  spDetails: SupplementDetail[];
+}> => {
   const browser = await puppeteer.launch({
     args: ["--no-sandbox", "--disable-setuid-sandbox"]
   });
-  const spInfos: SupplementInfo[] = [];
-  for await (var obj of top24SpInfos) {
+  const spDetails: SupplementDetail[] = [];
+  const spNutoritions: SupplementNutorition[] = [];
+
+  for await (var obj of top24SpInfos.slice(0, 3)) {
     const page: Page = await browser.newPage();
     await page.goto(obj.url);
     const spNutorition = await getNutoritions(page, obj.productName, obj.url);
     const spDetail = await getSpDetail(page, obj.url);
-    const spInfo: SupplementInfo = {
-      id: 0,
-      spDetail: spDetail,
-      spNutorition: spNutorition
-    };
-    spInfos.push(spInfo);
-    console.log("次へ");
-    console.log({ spInfo });
-    console.log(spInfo.spNutorition);
+    spNutoritions.push(spNutorition);
+    spDetails.push(spDetail);
     await sleep(10000);
   }
   browser.close();
-  return spInfos;
+  return { spNutoritions: spNutoritions, spDetails: spDetails };
 };
 
-export default getSpDetails;
+export default getSpInfos;

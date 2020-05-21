@@ -99,7 +99,7 @@ const getSpDetail = async (page: Page, url: string) => {
     }
   }
   const pricePerOne = tempSpInfo.price / tempSpInfo.amount;
-  tempSpInfo["capsu"] = pricePerOne ? pricePerOne : 0;
+  tempSpInfo["pricePerOne"] = pricePerOne ? pricePerOne : 0;
   tempSpInfo["capsuleType"] = getCapsuleType(url);
   tempSpInfo["productUrl"] = url;
   const spDetail: SupplementDetail = tempSpInfo;

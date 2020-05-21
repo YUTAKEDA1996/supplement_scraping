@@ -2,7 +2,7 @@ import * as fs from "fs";
 import csvSync = require("csv-parse/lib/sync");
 import * as csv from "csv";
 
-const readCsv = (fileName: string) => {
+export const readCsv = (fileName: string) => {
   const data = fs.readFileSync(fileName);
   const matrix = csvSync(data);
   return matrix;
@@ -21,6 +21,12 @@ export const write = (input: any[], fileName: string) => {
   }
 };
 
+export const overWrite = (input: any[], fileName: string) => {
+  csv.stringify(input, { header: true }, function(err, output) {
+    fs.writeFileSync(fileName, output);
+  });
+};
+
 const isExistFile = (fileName: string) => {
   try {
     fs.statSync(fileName);
@@ -29,5 +35,7 @@ const isExistFile = (fileName: string) => {
     if (err.code === "ENOENT") return false;
   }
 };
+
+export const convertCSVtoArray = async (path: string) => {};
 
 export default readCsv;
