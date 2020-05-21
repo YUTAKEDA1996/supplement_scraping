@@ -1,10 +1,7 @@
-# node.js+typescript boilerplate
+# iharb　スクレイピング
 
-#init
-
+下記のコードで実行できます
 ```
 npm install
-//live watch 
 npm run start 
-
 ```
