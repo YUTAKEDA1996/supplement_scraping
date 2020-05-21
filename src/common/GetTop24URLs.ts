@@ -21,14 +21,13 @@ const getTop24URLs = async (nutorition: string): Promise<Top24Supplements> => {
     elemts.map(async (i: any) => {
       const handleURL = await i.getProperty("href");
       const handleTitle = await i.getProperty("title");
-      const handleId = await i.getProperty("daria-label");
       const url: string = await handleURL.jsonValue();
       const title: string = await handleTitle.jsonValue();
-      const itemId: string = await handleId.jsonValue();
+      const itemId = getItemId(url);
       const ratingInfo: {
         rating: number;
         ratingCount: number;
-      } = await getRating(itemId, page);
+      } = await getRating(String(itemId), page);
       const price: number = await getPrice(Number(itemId), page);
       top24Supplement.push({
         category: nutorition,
@@ -54,32 +53,49 @@ const getRating = async (
   const ratingValuePath =
     '//div[@id="' +
     productCode +
-    '"]/div[@itemprop="aggregateRating"]/meta[@itemprop="ratingValue"]';
+    '"]/div[@class="product-inner product-inner-wide"]/div[@itemprop="aggregateRating"]/meta[@itemprop="ratingValue"]';
   const ratingCountPath =
     '//div[@id="' +
     productCode +
-    '"]/div[@itemprop="aggregateRating"]/meta[@itemprop="ratingCount"]';
+    '"]/div[@class="product-inner product-inner-wide"]/div[@itemprop="aggregateRating"]/meta[@itemprop="ratingCount"]';
   const ratingValueElement: puppeteer.ElementHandle<Element>[] = await page.$x(
     ratingValuePath
   );
+
   const ratingCountElement: puppeteer.ElementHandle<Element>[] = await page.$x(
     ratingCountPath
   );
-
   const handleRatingValue = await ratingValueElement?.[0]?.getProperty(
-    "itemprop"
+    "content"
   );
   const handleRatingCount = await ratingCountElement?.[0]?.getProperty(
-    "itemprop"
+    "content"
   );
+
   const ratingValue = await handleRatingValue?.jsonValue();
   const ratingCount = await handleRatingCount?.jsonValue();
 
-  return { rating: Number(0), ratingCount: Number(0) };
+  return { rating: Number(ratingValue), ratingCount: Number(ratingCount) };
 };
 
-const getPrice = async (itemId: number, page: Page) => {
-  return 100;
+const getPrice = async (itemId: number, page: Page): Promise<number> => {
+  const productCode = "pid_" + String(itemId);
+  const pricePath =
+    '//div[@id="' +
+    productCode +
+    '"]/div[@class="product-inner product-inner-wide"]/div[@itemprop="offers"]/meta[@itemprop="price"]';
+  const priceElement: puppeteer.ElementHandle<Element>[] = await page.$x(
+    pricePath
+  );
+  const handlePrice = await priceElement?.[0]?.getProperty("content");
+  const price = await handlePrice?.jsonValue();
+  return Number(price ? price : 0);
+};
+
+const getItemId = (url: string) => {
+  const numbers = url.match(/[\d]{1,}/g);
+  const itemId = numbers ? numbers[numbers?.length - 1] : 0;
+  return itemId;
 };
 
 export default getTop24URLs;

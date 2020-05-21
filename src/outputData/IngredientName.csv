@@ -1,15 +1,15 @@
 name,isFinish
-Willow bark	,true
-Citrulline	,true
-Arginine	,true
-DHA	,true
-EPA	,true
-HMB	,true
-glycine	,true
-zinc	,true
-chromium	,true
-selenium	,true
-protein	,true
+Willow bark	,false
+Citrulline	,false
+Arginine	,false
+DHA	,false
+EPA	,false
+HMB	,false
+glycine	,false
+zinc	,false
+chromium	,false
+selenium	,false
+protein	,false
 Vitamin C	,false
 L-cysteine	,false
 Maca	,false

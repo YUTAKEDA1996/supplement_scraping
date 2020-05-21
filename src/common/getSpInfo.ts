@@ -1,13 +1,21 @@
 import puppeteer, { Page } from "puppeteer";
 import getNutoritions from "./nutorition";
 import getSpDetail from "./spDetail";
-import { sleep } from "./utility";
+import { sleep, getExFormattNutorition } from "./utility";
 import {
   SupplementDetail,
   Top24Supplements,
   SupplementInfo,
-  SupplementNutorition
+  SupplementNutorition,
+  ExFormattNutorition
 } from "../types/crawling/crawling";
+import readCsv, { write, overWrite } from "../common/common_csv";
+import {
+  spDetailCsvPath,
+  spNutoritionsCsvPath,
+  ingredNameCsvPath,
+  top24URLsCsvPath
+} from "../paths";
 
 const getSpInfos = async (
   top24SpInfos: Top24Supplements
@@ -20,14 +28,27 @@ const getSpInfos = async (
   });
   const spDetails: SupplementDetail[] = [];
   const spNutoritions: SupplementNutorition[] = [];
-
-  for await (var obj of top24SpInfos.slice(0, 3)) {
+  var counter = 0;
+  for await (var obj of top24SpInfos) {
+    counter += 1;
     const page: Page = await browser.newPage();
     await page.goto(obj.url);
     const spNutorition = await getNutoritions(page, obj.productName, obj.url);
     const spDetail = await getSpDetail(page, obj.url);
     spNutoritions.push(spNutorition);
     spDetails.push(spDetail);
+    const exportFormatNutorition: ExFormattNutorition = getExFormattNutorition([
+      spNutorition
+    ]);
+    write([spDetail], spDetailCsvPath);
+    write(exportFormatNutorition, spNutoritionsCsvPath);
+    const nokoriZikan = ((top24SpInfos.length - counter) * 20) / 60;
+    console.log(
+      obj.productName +
+        "\tDone! waiting next...  remaining time\t" +
+        String(Math.floor(nokoriZikan)) +
+        "min"
+    );
     await sleep(10000);
   }
   browser.close();

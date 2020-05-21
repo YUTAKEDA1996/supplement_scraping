@@ -46,6 +46,8 @@ export const deduplication = async (
         }).length === 0
       ) {
         uniqueUrls.push(c);
+      } else {
+        console.log(c.category + "-" + c.productName + "\tAlready finished");
       }
     });
     return uniqueUrls;
