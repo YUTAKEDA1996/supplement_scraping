@@ -1,58 +1,92 @@
-import puppeteer from "puppeteer";
-import devices from "puppeteer/DeviceDescriptors";
-import { JSDOM } from "jsdom";
-import * as XLSX from "xlsx";
-import fs from "fs";
+import { sleep } from "./common/utility";
+import {
+  SupplementInfo,
+  SupplementDetail,
+  SupplementNutorition,
+  Top24Supplements,
+  ExFormattNutorition
+} from "./types/crawling/crawling";
+import getTop24URLs from "./common/GetTop24URLs";
+import getSpDetails from "./common/getSpInfo";
+import readCsv, { write, overWrite } from "./common/common_csv";
+import { deduplication, getExFormattNutorition } from "./common/utility";
+import {
+  spDetailCsvPath,
+  spNutoritionsCsvPath,
+  ingredNameCsvPath,
+  top24URLsCsvPath
+} from "./paths";
 
-(async () => {
-  const browser = await puppeteer.launch({
-    args: ["--no-sandbox", "--disable-setuid-sandbox"]
-  });
-  const page = await browser.newPage();
-  //   const iPhone = devices["iPhone 6"];
+//csv fileのpath
 
-  //   await page.emulate(iPhone);
-  // login
-  const res: any = await page.goto(
-    "https://jp.iherb.com/pr/Doctor-s-Best-Glucosamine-Chondroitin-MSM-Hyaluronic-Acid-150-Veggie-Caps/40634?refid=3d808545-7e1d-40a0-8c02-9ade32a36386&reftype=rec"
-  ); //sample-site.comへ接続
-
-  const xpath = '//div[@id="price"]';
-  const titlePath = '//h1[@id="name"]';
-  const amount = '//ul[@id="product-specs-list"]/li ';
-  const retingValue = '//meta[@itemprop="ratingValue"]'; //count
-  const retingCount = '//meta[@itemprop="ratingCount"]'; //content
-  const stockStatus = '//div[@id="stock-status"]/strong'; //textContet
-  const imgURL = '//img[@id="iherb-product-image"]'; //src
-  const table = '//div[@class="supplement-facts-container"]/table/tbody/tr/td';
-
-  const elems = await page.$x(table);
-  console.log(elems.length);
-  //   const jsHandle = await elems[0]?.getProperty("textContent");
-
-  await Promise.all(
-    elems?.map(async i => {
-      const jsHandle = await i?.getProperty("textContent");
-      const text = await jsHandle?.jsonValue();
-      console.log({ text });
-      return true;
-    })
+const main = async () => {
+  console.log("\t--collecting details start！---");
+  //成分名のcsv読み込み
+  const readURLSCSV = readCsv(top24URLsCsvPath);
+  const topSpURLs: Top24Supplements = convertObj(readURLSCSV.slice(1), [
+    "category",
+    "productName",
+    "url",
+    "rating",
+    "raitingCount",
+    "price",
+    "capsuleType"
+  ]);
+  //過去に一度取得したURLは消去する
+  const uniqueURLS: Top24Supplements = await deduplication(
+    topSpURLs,
+    spDetailCsvPath
   );
-  //   const jsHandle = await elems[20]?.getProperty("textContent");
-  //   const text = await jsHandle?.jsonValue();
+  await getSpDetails(uniqueURLS);
+  console.log("\t--collecting details end！---");
+};
 
-  //console.log({ text });
+const top24URLoutputs = async () => {
+  const words: any[] = readCsv(ingredNameCsvPath);
+  const endWords: string[][] = [];
+  console.log("\t--loading start！---");
+  for await (var c of words.slice(1)) {
+    if (c[1] === "false") {
+      const Top24URL = await getTop24URLs(c[0]);
+      write(Top24URL, top24URLsCsvPath);
+      await sleep(10000);
+      console.log(c[0] + "\tDone! waiting next...");
+    } else {
+      console.log(c[0] + "\tAlready finished");
+    }
 
-  browser.close();
-})();
+    endWords.push([c[0], "true"]);
+  }
 
-//   const jsHandle = await elems[0]?.getProperty("textContent");
-// await elems?.map(async i => {
-//     console.log(i.getProperty("textContent"));
-//     const text = await jsHandle?.jsonValue();
-//     console.log({ text });
-// });
-//     const jsHandle = await elems[20]?.getProperty("textContent");
-//     const text = await jsHandle?.jsonValue();
+  const conect = endWords.concat(words.slice(endWords.length + 1));
+  overWrite(convertObj(conect, ["name", "isFinish"]), ingredNameCsvPath);
+  console.log("\t--All finished！---");
+};
 
-//   console.log({ text });
+const convertObj = (array: string[][], colums: string[]) => {
+  const objs: any[] = [];
+  array.map(i => {
+    const obj: any = {};
+    colums.map((c: string, index: number) => {
+      obj[c] = i[index];
+    });
+    objs.push(obj);
+  });
+  return objs;
+};
+
+//コマンドライン引数対応
+
+// const commandLineArgs = require("command-line-args");
+// const optionDefinitions = [
+//   {
+//     name: "fcType",
+//     alias: "v",
+//     type: String  }
+// ];
+// const options = commandLineArgs(optionDefinitions);
+// console.log(options);
+// options.fcType === "getInfo" ? main() : top24URLoutputs();
+
+top24URLoutputs();
+main();
